@@ -1,14 +1,25 @@
 import styled from "styled-components";
+import planet from "../../images/planet_1.png";
 
 export const ContentWrapper = styled.div`
   width: 100%;
 `;
 
 export const SelectorWrapper = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 270px;
+  height: 270px;
   display: inline-block;
   vertical-align: top;
+  margin: 10px;
+  background: ${`url(${planet})`};
+  background-size: cover;
+`;
+
+export const BackGround = styled.div`
+  background-color: rgba(248, 247, 216, 0.7);
+  height: 100%;
+  width: 100%;
+  padding: 10px;
 `;
 
 export const Button = styled.div`

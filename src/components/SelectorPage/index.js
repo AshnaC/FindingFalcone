@@ -8,7 +8,8 @@ import {
   SelectorWrapper,
   Button,
   OptionsWrapper,
-  TimeTaken
+  TimeTaken,
+  BackGround
 } from "./styles";
 
 class SelectorPage extends React.PureComponent {
@@ -18,32 +19,35 @@ class SelectorPage extends React.PureComponent {
     availablePlanets: this.props.planets
   };
   state = { ...this.initialState };
+  // images = ["planet_1", "planet_2", "planet_3", "planet_4"];
   render() {
     const searchButtonEnabled = this.isSearchButtonEnabled();
     return (
       <ContentWrapper>
         <TimeTaken>Time taken: {this.getTotalTime()}</TimeTaken>
         <OptionsWrapper>
-          {this.props.selectionGroupIds.map(item => {
+          {this.props.selectionGroupIds.map((item, i) => {
             const group =
               this.state.selectionList.find(
                 selection => selection.id === item.id
               ) || {};
             return (
               <SelectorWrapper key={item.id}>
-                <DropDown
-                  selectedOption={group.selectedPlanet}
-                  options={this.state.availablePlanets}
-                  selectItem={this.selectPlanet(item.id, group)}
-                  defaultText="Select a planet"
-                />
-                {group.selectedPlanet && (
-                  <RadioButtonList
-                    selectedOption={group.selectedVehicle}
-                    selectItem={this.selectVehicle(group)}
-                    options={this.getAvailableVehiclesForPlanet(group)}
+                <BackGround>
+                  <DropDown
+                    selectedOption={group.selectedPlanet}
+                    options={this.state.availablePlanets}
+                    selectItem={this.selectPlanet(item.id, group)}
+                    defaultText="Select a planet"
                   />
-                )}
+                  {group.selectedPlanet && (
+                    <RadioButtonList
+                      selectedOption={group.selectedVehicle}
+                      selectItem={this.selectVehicle(group)}
+                      options={this.getAvailableVehiclesForPlanet(group)}
+                    />
+                  )}
+                </BackGround>
               </SelectorWrapper>
             );
           })}
