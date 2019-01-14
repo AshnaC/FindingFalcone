@@ -18,3 +18,12 @@ export const AppStates = {
   ERROR: 3,
   MISSION_OVER: 4
 };
+
+export const planetSigils = [
+  "sigil_1.jpeg",
+  "sigil_2.jpg",
+  "sigil_3.jpg",
+  "sigil_4.jpg",
+  "sigil_5.png",
+  "sigil_6.jpg"
+];

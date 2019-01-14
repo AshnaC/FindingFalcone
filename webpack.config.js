@@ -1,4 +1,3 @@
-
 const path = require("path");
 const webpack = require("webpack");
 
@@ -10,20 +9,20 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        options: { presets: ['env','stage-0'] }
+        loader: "babel-loader",
+        options: { presets: ["env", "stage-0"] }
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(eot|svg|otf|ttf|woff|woff2|jpg|png)$/,
-        use: 'file-loader',
-      },
+        test: /\.(eot|svg|otf|ttf|woff|woff2|jpg|png|jpeg)$/,
+        use: "file-loader"
+      }
     ]
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
@@ -35,5 +34,5 @@ module.exports = {
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true
   },
-  plugins: [ new webpack.HotModuleReplacementPlugin() ]
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };

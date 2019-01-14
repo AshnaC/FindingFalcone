@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import planet from "../../images/planet_1.png";
+import planet from "../../images/sigil_6.jpg";
 
 export const ContentWrapper = styled.div`
   width: 100%;
@@ -11,12 +11,16 @@ export const SelectorWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
   margin: 10px;
-  background: ${`url(${planet})`};
-  background-size: cover;
+  background: ${props => `url(${require(`../../images/${props.imageName}`)})`}
+    no-repeat;
+  background-size: contain;
+  background-size: 100%;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `;
 
 export const BackGround = styled.div`
-  background-color: rgba(248, 247, 216, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   height: 100%;
   width: 100%;
   padding: 10px;

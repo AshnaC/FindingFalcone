@@ -32,7 +32,12 @@ class SelectorPage extends React.PureComponent {
                 selection => selection.id === item.id
               ) || {};
             return (
-              <SelectorWrapper key={item.id}>
+              <SelectorWrapper
+                key={item.id}
+                imageName={
+                  group.selectedPlanet ? group.selectedPlanet.sigil : "blue.jpg"
+                }
+              >
                 <BackGround>
                   <DropDown
                     selectedOption={group.selectedPlanet}

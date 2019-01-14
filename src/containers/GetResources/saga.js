@@ -1,10 +1,10 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
-import { LOAD_OPTIONS, SEARCH_FALCON } from "./constants";
+import { LOAD_OPTIONS, SEARCH_FALCON, planetSigils } from "./constants";
 import { optionsLoaded, searchFalconFinished, setError } from "./actions";
 
 export function* getOptions() {
   try {
-    const [planets, vehicles] = yield all([
+    let [planets, vehicles] = yield all([
       call(fetchApi, "https://findfalcone.herokuapp.com/planets", {
         method: "GET"
       }),
@@ -12,6 +12,10 @@ export function* getOptions() {
         method: "GET"
       })
     ]);
+    planets = planets.map((planet, i) => ({
+      ...planet,
+      sigil: planetSigils[i]
+    }));
     yield put(optionsLoaded({ planets, vehicles }));
   } catch (er) {
     yield put(setError());
