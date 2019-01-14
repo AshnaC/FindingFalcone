@@ -37,13 +37,6 @@ describe("<RadioButtonList />", () => {
       beforeEach(() => {
         radioButtons = enzymeFind(component, RadioButton);
       });
-      it("Radio button recieves enabled as props", () => {
-        // const enableOptions = radioButtons.map(
-        //   node => node.prop("enableOptions")
-        // );
-        // const enabledProps = props.options.map(item => item.enabled);
-        // expect(enableOptions).toEqual(enabledProps);
-      });
       it("onclick event attached to RadioButton", () => {
         const enableOptions = radioButtons.map(node =>
           node.prop("onClick") ? true : false

@@ -48,7 +48,7 @@ const mapStateToProps = createStructuredSelector({
   getresources: makeSelectGetResources()
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     resetStatus: () => dispatch(resetStatus()),
     loadOptions: () => dispatch(loadOptions()),

@@ -1,21 +1,19 @@
 import React from "react";
 import { mount } from "enzyme";
-import { enzymeFind } from "styled-components/test-utils";
-// import { Provider } from "react-redux";
+import {
+  loadOptions as loadOptionsAction,
+  searchFalcon,
+  resetStatus
+} from "../actions";
 
-import { GetResources } from "../index";
+import { GetResources, mapDispatchToProps } from "../index";
 import SelectorLayout from "../../../components/SelectorLayout";
-// import store from "../../../store/configureStore";
 
 describe("<GetResources />", () => {
   let props;
   let loadOptions;
   const getResources = props => {
-    const wrapper = mount(
-      // <Provider store={store}>
-      <GetResources {...props} />
-      // </Provider>
-    );
+    const wrapper = mount(<GetResources {...props} />);
     return wrapper;
   };
   beforeEach(() => {
@@ -32,5 +30,44 @@ describe("<GetResources />", () => {
     props = { ...props, loadOptions };
     let component = getResources(props);
     expect(loadOptions).toHaveBeenCalled();
+  });
+
+  describe("mapDispatchToProps", () => {
+    const dispatch = jest.fn();
+    let result;
+    beforeEach(() => {
+      result = mapDispatchToProps(dispatch);
+    });
+    describe("onResetStatus", () => {
+      it("should be injected", () => {
+        expect(result.resetStatus).toBeDefined();
+      });
+
+      it("should dispatch resetStatus action when called", () => {
+        result.resetStatus();
+        expect(dispatch).toHaveBeenCalledWith(resetStatus());
+      });
+    });
+    describe("loadOptions", () => {
+      it("should be injected", () => {
+        expect(result.loadOptions).toBeDefined();
+      });
+
+      it("should dispatch loadOptions action when called", () => {
+        result.loadOptions();
+        expect(dispatch).toHaveBeenCalledWith(loadOptionsAction());
+      });
+    });
+    describe("searchFalcon", () => {
+      it("should be injected", () => {
+        expect(result.searchFalcon).toBeDefined();
+      });
+
+      it("should dispatch searchFalcon action when called", () => {
+        const payload = { param: "test" };
+        result.searchFalcon(payload);
+        expect(dispatch).toHaveBeenCalledWith(searchFalcon(payload));
+      });
+    });
   });
 });
