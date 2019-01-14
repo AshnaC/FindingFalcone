@@ -2,7 +2,7 @@ import { takeLatest, call, put, all } from "redux-saga/effects";
 import { LOAD_OPTIONS, SEARCH_FALCON } from "./constants";
 import { optionsLoaded, searchFalconFinished, setError } from "./actions";
 
-function* getOptions() {
+export function* getOptions() {
   try {
     const [planets, vehicles] = yield all([
       call(fetchApi, "https://findfalcone.herokuapp.com/planets", {
@@ -18,7 +18,7 @@ function* getOptions() {
   }
 }
 
-function* searchFalcon(action) {
+export function* searchFalcon(action) {
   try {
     const token = yield call(
       fetchApi,
