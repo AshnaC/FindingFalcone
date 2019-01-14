@@ -19,11 +19,10 @@ export const SelectorWrapper = styled.div`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `;
 
-export const BackGround = styled.div`
-  background-color: rgba(255, 255, 255, 0.7);
+export const LightBackground = styled.div`
+  background-color: rgba(255, 255, 255, 0.5);
   height: 100%;
   width: 100%;
-  padding: 10px;
 `;
 
 export const Button = styled.div`
@@ -57,4 +56,12 @@ export const TimeTaken = styled.div`
   font-size: 20px;
   font-weight: bold;
   padding-bottom: 20px;
+`;
+
+export const DarkBackground = styled.div`
+  background: rgb(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px;
 `;

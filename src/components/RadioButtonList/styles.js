@@ -28,7 +28,7 @@ export const ItemWrapper = styled.div`
 `;
 
 export const Label = styled.div`
-  color: #333
+  color: #fff
   line-height: 24px;
   font-size: 14px;
   padding-left: 30px;
@@ -37,4 +37,9 @@ export const Label = styled.div`
 
 export const ListWrapper = styled.div`
   margin-top: 30px;
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+  padding-left: 15px;
+  padding-top: 30px;
 `;

@@ -9,7 +9,8 @@ import {
   Button,
   OptionsWrapper,
   TimeTaken,
-  BackGround
+  DarkBackground,
+  LightBackground
 } from "./styles";
 
 class SelectorPage extends React.PureComponent {
@@ -38,21 +39,23 @@ class SelectorPage extends React.PureComponent {
                   group.selectedPlanet ? group.selectedPlanet.sigil : "blue.jpg"
                 }
               >
-                <BackGround>
-                  <DropDown
-                    selectedOption={group.selectedPlanet}
-                    options={this.state.availablePlanets}
-                    selectItem={this.selectPlanet(item.id, group)}
-                    defaultText="Select a planet"
-                  />
-                  {group.selectedPlanet && (
-                    <RadioButtonList
-                      selectedOption={group.selectedVehicle}
-                      selectItem={this.selectVehicle(group)}
-                      options={this.getAvailableVehiclesForPlanet(group)}
+                <LightBackground>
+                  <DarkBackground>
+                    <DropDown
+                      selectedOption={group.selectedPlanet}
+                      options={this.state.availablePlanets}
+                      selectItem={this.selectPlanet(item.id, group)}
+                      defaultText="Select a planet"
                     />
-                  )}
-                </BackGround>
+                    {group.selectedPlanet && (
+                      <RadioButtonList
+                        selectedOption={group.selectedVehicle}
+                        selectItem={this.selectVehicle(group)}
+                        options={this.getAvailableVehiclesForPlanet(group)}
+                      />
+                    )}
+                  </DarkBackground>
+                </LightBackground>
               </SelectorWrapper>
             );
           })}
