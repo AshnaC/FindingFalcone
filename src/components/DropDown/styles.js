@@ -8,6 +8,7 @@ export const DropDownWrapper = styled.div`
 
 export const Selector = styled.div`
   width: 100%;
+  cursor: pointer;
   line-height: 40px;
   border: 1px solid #dedede;
   border-radius: 6px;

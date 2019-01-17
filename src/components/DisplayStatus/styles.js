@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import FontAwesome from "react-fontawesome";
 
 export const StatusMessage = styled.div`
   font-size: 20px;
@@ -30,4 +31,10 @@ export const MissionDetails = styled.div`
   font-size: 16px;
   line-height: 30px;
   color: #a9a9a9;
+`;
+
+export const StyledIcon = styled(FontAwesome)`
+  padding-right: 10px;
+  color: cornflowerblue;
+  font-weight: bold;
 `;

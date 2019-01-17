@@ -33,7 +33,6 @@ export const Header = styled.div`
   line-height: 50px;
   background: #1f6bc0;
   color: #fff;
-  padding-left: 100px;
 `;
 
 export const HeaderItem = styled.div`

@@ -5,7 +5,8 @@ import {
   StatusMessage,
   ContentWrapper,
   Button,
-  MissionDetails
+  MissionDetails,
+  StyledIcon
 } from "./styles";
 
 function DisplayStatus(props) {
@@ -13,6 +14,7 @@ function DisplayStatus(props) {
   if (props.status === "success") {
     content = (
       <StatusMessage>
+        <StyledIcon name="thumbs-o-up" />
         Success! Congrats on finding Falcone
         <MissionDetails>Planet found: {props.planet_name}</MissionDetails>
         <MissionDetails>Time Taken: {props.timeTaken}</MissionDetails>
@@ -20,7 +22,10 @@ function DisplayStatus(props) {
     );
   } else {
     content = (
-      <StatusMessage> Mission Failed! Falcone is safe and sound.</StatusMessage>
+      <StatusMessage>
+        <StyledIcon name="thumbs-o-down" />
+        Mission Failed! Falcone is safe and sound.
+      </StatusMessage>
     );
   }
   return (
