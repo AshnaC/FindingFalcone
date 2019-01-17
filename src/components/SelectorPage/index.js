@@ -10,7 +10,11 @@ import {
   OptionsWrapper,
   TimeTaken,
   DarkBackground,
-  LightBackground
+  LightBackground,
+  SelectedTile,
+  TileItem,
+  ItemHeader,
+  ItemDetail
 } from "./styles";
 
 class SelectorPage extends React.PureComponent {
@@ -20,7 +24,6 @@ class SelectorPage extends React.PureComponent {
     availablePlanets: this.props.planets
   };
   state = { ...this.initialState };
-  // images = ["planet_1", "planet_2", "planet_3", "planet_4"];
   render() {
     const searchButtonEnabled = this.isSearchButtonEnabled();
     return (
@@ -32,31 +35,50 @@ class SelectorPage extends React.PureComponent {
               this.state.selectionList.find(
                 selection => selection.id === item.id
               ) || {};
+            const sigil = group.selectedPlanet && group.selectedPlanet.sigil;
             return (
-              <SelectorWrapper
-                key={item.id}
-                imageName={
-                  group.selectedPlanet ? group.selectedPlanet.sigil : "blue.jpg"
-                }
-              >
-                <LightBackground>
-                  <DarkBackground>
-                    <DropDown
-                      selectedOption={group.selectedPlanet}
-                      options={this.state.availablePlanets}
-                      selectItem={this.selectPlanet(item.id, group)}
-                      defaultText="Select a planet"
-                    />
-                    {group.selectedPlanet && (
-                      <RadioButtonList
-                        selectedOption={group.selectedVehicle}
-                        selectItem={this.selectVehicle(group)}
-                        options={this.getAvailableVehiclesForPlanet(group)}
+              <div key={item.id}>
+                <SelectorWrapper imageName={sigil}>
+                  <LightBackground showBackGround={sigil}>
+                    <DarkBackground showBackGround={sigil}>
+                      <DropDown
+                        selectedOption={group.selectedPlanet}
+                        options={this.state.availablePlanets}
+                        selectItem={this.selectPlanet(item.id, group)}
+                        defaultText="Select a planet"
                       />
-                    )}
-                  </DarkBackground>
-                </LightBackground>
-              </SelectorWrapper>
+                      {group.selectedPlanet && (
+                        <RadioButtonList
+                          selectedOption={group.selectedVehicle}
+                          selectItem={this.selectVehicle(group)}
+                          options={this.getAvailableVehiclesForPlanet(group)}
+                        />
+                      )}
+                    </DarkBackground>
+                  </LightBackground>
+                </SelectorWrapper>
+                {group.selectedPlanet && group.selectedVehicle && (
+                  <SelectedTile>
+                    <TileItem>
+                      <ItemHeader>Planet</ItemHeader>
+                      <ItemDetail>{group.selectedPlanet.name}</ItemDetail>
+                      <ItemDetail>
+                        {group.selectedPlanet.distance} km
+                      </ItemDetail>
+                    </TileItem>
+                    <TileItem>
+                      <ItemHeader>Vehicle</ItemHeader>
+                      <ItemDetail>{group.selectedVehicle.name}</ItemDetail>
+                      <ItemDetail>
+                        {group.selectedVehicle.max_distance} km
+                      </ItemDetail>
+                      <ItemDetail>
+                        {group.selectedVehicle.speed} kmph
+                      </ItemDetail>
+                    </TileItem>
+                  </SelectedTile>
+                )}
+              </div>
             );
           })}
         </OptionsWrapper>

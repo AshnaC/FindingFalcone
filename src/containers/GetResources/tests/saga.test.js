@@ -28,7 +28,11 @@ describe("load options saga", () => {
     loadOptionsGenerator.next();
   });
   it("should dispatch optionsloaded action when data is fetched", () => {
-    const planets = [1, 2, 3];
+    const planets = [
+      { sigil: "sigil_1.jpeg" },
+      { sigil: "sigil_2.jpg" },
+      { sigil: "sigil_3.jpg" }
+    ];
     const vehicles = ["A", "B", "C"];
     const response = { planets, vehicles };
     const putDescriptor = loadOptionsGenerator.next([planets, vehicles]).value;

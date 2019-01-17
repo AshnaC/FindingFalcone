@@ -14,7 +14,8 @@ import {
   StyledArrow,
   SelectedItem,
   OptionsWrapper,
-  Interstitial
+  Interstitial,
+  SigilBackGround
 } from "./styles";
 
 class DropDown extends React.PureComponent {
@@ -28,7 +29,7 @@ class DropDown extends React.PureComponent {
           <SelectedItem>
             {selectedOption.name || this.props.defaultText}
           </SelectedItem>
-          <StyledArrow name="angle-down" />
+          <StyledArrow name="caret-down" />
         </Selector>
         <OptionsWrapper>
           {showDropDown &&
@@ -36,6 +37,7 @@ class DropDown extends React.PureComponent {
               const name = item.name || item.value;
               return (
                 <Options key={`${name}_${i}`} onClick={this.selectItem(item)}>
+                  <SigilBackGround imageName={item.sigil || "blue.jpg"} />
                   {name}
                 </Options>
               );
@@ -63,8 +65,7 @@ DropDown.defaultProps = { options: [], selectedOption: {} };
 DropDown.propTypes = {
   options: PropTypes.array,
   selectedOption: PropTypes.object,
-  defaultText: PropTypes.string,
-  
+  defaultText: PropTypes.string
 };
 
 export default DropDown;

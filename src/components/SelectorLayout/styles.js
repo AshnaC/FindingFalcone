@@ -17,25 +17,34 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
 `;
 
 export const Heading = styled.div`
   font-family: "Amiri", serif;
-  color: #333;
   font-size: 30px;
   font-weight: bold;
-  padding: 20px 0 40px;
+  display: inline-block;
+  width: calc(100% - 120px);
+  text-align: center;
 `;
 
 export const Header = styled.div`
-  margin-left: auto;
+  width: 100%;
+  line-height: 50px;
+  background: #1f6bc0;
+  color: #fff;
+  padding-left: 100px;
 `;
 
 export const HeaderItem = styled.div`
   font-family: "Amiri", serif;
-  color: #333;
   display: inline-block;
   padding: 10px;
   cursor: pointer;
+  font-weight: bold;
+`;
+
+export const SubHeader = styled.div`
+  display: inline-block;
+  width: 120px;
 `;

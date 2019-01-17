@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Loader, ContentWrapper, Header, Heading, HeaderItem } from "./styles";
+import {
+  Loader,
+  ContentWrapper,
+  Header,
+  Heading,
+  HeaderItem,
+  SubHeader
+} from "./styles";
 
 import SelectorPage from "../SelectorPage";
 import LoadingIndicator from "../LoadingIndicator";
@@ -57,11 +64,13 @@ class SelectorLayout extends React.PureComponent {
       <ContentWrapper>
         {showHeader && (
           <Header>
-            <HeaderItem onClick={this.resetData}>Reset</HeaderItem>|
-            <HeaderItem onClick={this.redirectToHome}>Home</HeaderItem>
+            <Heading>Finding Falcone</Heading>
+            <SubHeader>
+              <HeaderItem onClick={this.resetData}>Reset</HeaderItem>
+              <HeaderItem onClick={this.redirectToHome}>Home</HeaderItem>
+            </SubHeader>
           </Header>
         )}
-        <Heading>Finding Falcone!</Heading>
         {content}
         {loading && (
           <Loader>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import planet from "../../images/sigil_6.jpg";
 
 export const ContentWrapper = styled.div`
   width: 100%;
@@ -11,8 +10,11 @@ export const SelectorWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
   margin: 10px;
-  background: ${props => `url(${require(`../../images/${props.imageName}`)})`}
-    no-repeat;
+
+  background: ${props =>
+    props.imageName
+      ? `url(${require(`../../images/${props.imageName}`)}) no-repeat`
+      : "#fff"};
   background-size: contain;
   background-size: 100%;
   border-radius: 6px;
@@ -20,7 +22,7 @@ export const SelectorWrapper = styled.div`
 `;
 
 export const LightBackground = styled.div`
-  background-color: rgba(255, 255, 255, 0.5);
+  ${props => props.showBackGround && `background-color: rgba(255, 255, 255, 0.5);`}
   height: 100%;
   width: 100%;
 `;
@@ -38,6 +40,7 @@ export const Button = styled.div`
   font-sizd:14px;
   font-weight:bold;
   margin:auto;
+  margin-bottom: 10px;
 `;
 
 export const OptionsWrapper = styled.div`
@@ -55,13 +58,45 @@ export const TimeTaken = styled.div`
   color: #333;
   font-size: 20px;
   font-weight: bold;
-  padding-bottom: 20px;
+  padding: 20px;
 `;
 
 export const DarkBackground = styled.div`
-  background: rgb(0, 0, 0, 0.5);
+  ${props => props.showBackGround && `background-color: rgba(0, 0, 0, 0.5);`}
   height: 100%;
   width: 100%;
   border-radius: 6px;
   padding: 10px;
+`;
+
+export const SelectedTile = styled.div`
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 270px;
+  margin: 10px;
+`;
+
+export const TileItem = styled.div`
+  text-align: center;
+  padding-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  height: 100px;
+`;
+export const ItemHeader = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-bottom: 2px;
+  background: aliceblue;
+  line-height: 25px;
+`;
+
+export const ItemDetail = styled.div`
+  padding: 0 10px;
+  font-size: 14px;
+  color: grey;
+  font-weight: bold;
+  line-height: 18px;
 `;
